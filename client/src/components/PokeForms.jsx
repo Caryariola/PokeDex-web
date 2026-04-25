@@ -44,7 +44,6 @@ const AddPokemonForm = ({ onClose, onRefresh, editData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Logic for default image
     const finalImage = formData.image.trim() === '' ? DEFAULT_IMAGE : formData.image;
 
     const payload = {

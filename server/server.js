@@ -8,7 +8,7 @@ const cors = require("cors");
 const PORT = 5000;
 const POKEMON_FILE = path.join(__dirname, 'pokemon.json');
 
-// Helper function to read from JSON
+
 const readLocalData = () => {
   if (!fs.existsSync(POKEMON_FILE)) {
     fs.writeFileSync(POKEMON_FILE, JSON.stringify({ pokemon: [] }));
@@ -17,7 +17,7 @@ const readLocalData = () => {
   return JSON.parse(data);
 };
 
-// Helper function to write to JSON
+
 const writeLocalData = (data) => {
   fs.writeFileSync(POKEMON_FILE, JSON.stringify(data, null, 2));
 };
@@ -110,9 +110,9 @@ app.put("/api/pokemon/:id", (req, res) => {
 
     // Update the Pokémon at that index with new data from req.body
     localData.pokemon[index] = { 
-      ...localData.pokemon[index], // Keep the original ID
-      ...req.body,                 // Overwrite with new data
-      id: id,                      // Ensure ID doesn't change
+      ...localData.pokemon[index], 
+      ...req.body,                 
+      id: id,                      
       isCustom: true 
     };
 

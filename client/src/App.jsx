@@ -17,7 +17,6 @@ function App() {
       const data = await fetchAllPokemon();
       
       const formatted = data.results.map((p) => {
-        // Fix: Handles both official (url) and custom (p.id) IDs
         const id = p.isCustom ? p.id : p.url.split('/').filter(Boolean).pop();
         
         return {
@@ -66,12 +65,11 @@ function App() {
           </div>
         )}
 
-        {/* UPDATED: Added onRefresh to PokemonDetail */}
         {selectedId && (
           <PokemonDetail 
             id={selectedId} 
             onClose={() => setSelectedId(null)} 
-            onRefresh={getPokemon} // <--- IMPORTANT: Allows the list to refresh if you delete a Pokemon
+            onRefresh={getPokemon} 
           />
         )}
 
